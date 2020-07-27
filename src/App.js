@@ -1,25 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Parents from './pages/parents'
+import Brother from './pages/brother'
 
+
+// 创建一个context
+export const { Provider, Consumer } = React.createContext('我是context默认值defaultValue')
 function App() {
+  // let myName = ['程冰',
+  // '26']
+  let myName = {
+    name:'cb',
+    age:'26'
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    //Provider共享容器 接收一个name属性
+    <Provider value={myName}>
+      <div className="App">
+        <p>你好呀,{myName.name}</p>
+        <Parents />
+        <Brother />
+      </div>
+    </Provider>
   );
 }
 
